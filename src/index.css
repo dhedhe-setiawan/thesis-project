@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply text-dark bg-light; /* Gunakan warna default */
+  }
+
+  h1 {
+    @apply text-3xl font-extrabold sm:text-5xl;
+  }
+  h2 {
+    @apply text-xl font-extrabold sm:text-3xl;
+  }
+
+  th,
+  td {
+    @apply px-3 py-2 border border-dark;
+  }
+
+  tr {
+    @apply has-[td]:hover:bg-dark/5;
+  }
+}
