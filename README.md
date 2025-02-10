@@ -14,9 +14,7 @@ Dibuat menggunakan `Vite + Javascript`
 
 ## About Us
 
-### Imraakun Dev
-
-#### Web Developer
+### Web Developer
 
 | Role              | Nama                                                       |
 | ----------------- | ---------------------------------------------------------- |
