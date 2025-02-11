@@ -20,7 +20,7 @@ const Frame = ({ children, access }) => {
 
   return (
     <div className='flex h-screen'>
-      {access !== 'A' && <Sidebar access={access} />}
+      <Sidebar access={access} />
 
       <div className='w-full h-full overflow-y-auto'>
         <Navbar />

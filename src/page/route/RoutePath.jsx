@@ -18,6 +18,7 @@ import DataSembako from '../private/data/DataSembako';
 import DataPegawai from '../private/data/DataPegawai';
 import TambahPegawai from '../private/tambah/TambahPegawai';
 import TambahBarang from '../private/tambah/TambahBarang';
+import Laporan from '../private/Laporan';
 
 const isLogin = true;
 const access = 'M';
@@ -38,6 +39,7 @@ const RoutePath = () => {
 
       <Route element={<PrivateRoute isLogin={isLogin} access={access} allowed={['M', 'A']} />}>
         <Route path='/dashboard' element={<Dashboard />} />
+        <Route path='/laporan' element={<Laporan />} />
       </Route>
 
       <Route element={<PrivateRoute isLogin={isLogin} access={access} allowed={['M']} />}>

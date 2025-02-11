@@ -37,6 +37,10 @@ const DataMakanan = ({ title }) => {
           <td>
             <span className='flex gap-2 '>
               <Button className={'bg-blue-500 text-light'}>
+                <FontAwesomeIcon icon={'fas fa-plus'} />
+              </Button>
+
+              <Button className={'bg-blue-500 text-light'}>
                 <FontAwesomeIcon icon={'fas fa-pencil'} />
               </Button>
 

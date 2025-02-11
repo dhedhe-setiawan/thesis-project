@@ -19,6 +19,7 @@ const Sidebar = ({ access }) => {
             <NavButton link={'/data/minuman'}>Data Minuman</NavButton>
             <NavButton link={'/data/sembako'}>Data Sembako</NavButton>
           </Dropdwon>
+          <NavButton link={'/laporan'}>Laporan</NavButton>
         </>
       )}
 
@@ -27,6 +28,13 @@ const Sidebar = ({ access }) => {
           <NavButton link={'/data/makanan'}>Data Makanan</NavButton>
           <NavButton link={'/data/minuman'}>Data Minuman</NavButton>
           <NavButton link={'/data/sembako'}>Data Sembako</NavButton>
+        </>
+      )}
+
+      {access === 'A' && (
+        <>
+          <NavButton link={'/dashboard'}>Dashboard</NavButton>
+          <NavButton link={'/laporan'}>Laporan</NavButton>
         </>
       )}
     </aside>
