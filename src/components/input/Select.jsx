@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { useId } from 'react';
 
-const Select = ({ label, inline, children, register, name, rules }) => {
+const Select = ({ label, placeholder, inline, children, register, name, rules }) => {
   const id = useId();
 
   return (
@@ -15,7 +15,7 @@ const Select = ({ label, inline, children, register, name, rules }) => {
       >
         {label && (
           <option hidden value=''>
-            {label}
+            {placeholder || label}
           </option>
         )}
         {children}
@@ -29,6 +29,7 @@ Select.propTypes = {
   inline: PropTypes.any,
   label: PropTypes.any,
   name: PropTypes.any,
+  placeholder: PropTypes.any,
   register: PropTypes.func,
   rules: PropTypes.any,
 };

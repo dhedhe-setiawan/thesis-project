@@ -35,7 +35,7 @@ const SearchForm = () => {
 
 const Dashboard = () => {
   return (
-    <div className='flex flex-col items-center gap-10 px-10 py-10'>
+    <div className='flex flex-col items-center gap-10 p-10'>
       <Heading title={'PT Karya Bersama'}>
         <SearchForm />
       </Heading>

@@ -2,11 +2,12 @@ import { useForm } from 'react-hook-form';
 import Heading from '../../../components/Heading';
 import Input from '../../../components/input/Input';
 import InputButton from '../../../components/input/InputButton';
-import useAxios from '../../../utils/axios';
-import { useNavigate } from 'react-router-dom';
+import useAxios, { useGetData } from '../../../utils/axios';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Select from '../../../components/input/Select';
+import { setJabatan } from '../../../utils/helper';
 
-const FormTambahPegawai = () => {
+const FormUbahPegawai = () => {
   const {
     register,
     handleSubmit,
@@ -14,11 +15,17 @@ const FormTambahPegawai = () => {
     reset,
   } = useForm();
 
-  const { postData, isLoading } = useAxios();
+  const location = useLocation();
+  const { id_pegawai } = location.state || {};
+
+  const { data, isLoading, error } = useGetData(`/pegawai/${id_pegawai}`);
+  const { patchData } = useAxios();
   const navigate = useNavigate();
 
-  const tambahPegawai = async (data) => {
-    const { response, error } = await postData('/pegawai', data);
+  if (error) return <p className='text-brand'>Terjadi kesalahan: {error.message}</p>;
+
+  const ubahPegawai = async (data) => {
+    const { response, error } = await patchData(`/pegawai/${id_pegawai}`, data);
 
     if (error) return alert(error.message);
     alert(response.message);
@@ -28,20 +35,20 @@ const FormTambahPegawai = () => {
   };
 
   return (
-    <form className='flex flex-col gap-2' onSubmit={handleSubmit(tambahPegawai)}>
+    <form className='flex flex-col gap-2' onSubmit={handleSubmit(ubahPegawai)}>
       <Input
         label={'Nama'}
-        placeholder={'Contoh: Dede Setiawan'}
+        placeholder={data?.nama}
         name={'nama'}
         register={register}
-        rules={{ required: 'Wajib di isi' }}
         error={errors.nama}
       />
+
       <Select
         label={'Jabatan'}
+        placeholder={setJabatan(data?.jabatan)}
         name={'jabatan'}
         register={register}
-        rules={{ required: 'Wajib di isi' }}
       >
         <option value='M'>Manager</option>
         <option value='A'>Admin</option>
@@ -49,26 +56,23 @@ const FormTambahPegawai = () => {
       </Select>
       <Input
         label={'No Hp'}
-        placeholder={'Contoh: 081234447899'}
+        placeholder={data?.hp}
         name={'hp'}
         register={register}
-        rules={{ required: 'Wajib di isi' }}
         error={errors.hp}
       />
       <Input
         label={'Email'}
-        placeholder={'Contoh: contoh@email.com'}
+        placeholder={data?.email}
         name={'email'}
         register={register}
-        rules={{ required: 'Wajib di isi' }}
         error={errors.email}
       />
       <Input
         label={'Username'}
-        placeholder={'Contoh: Dedebacot'}
+        placeholder={data?.username}
         name={'username'}
         register={register}
-        rules={{ required: 'Wajib di isi' }}
         error={errors.username}
       />
       <Input
@@ -76,7 +80,6 @@ const FormTambahPegawai = () => {
         label={'Password'}
         name={'password'}
         register={register}
-        rules={{ required: 'Wajib di isi' }}
         error={errors.password}
       />
       <br />
@@ -85,13 +88,13 @@ const FormTambahPegawai = () => {
   );
 };
 
-const TambahPegawai = () => {
+const UbahPegawai = () => {
   return (
     <div className='flex flex-col items-center gap-10 p-10'>
-      <Heading title={'Tambah Pegawai'} />
-      <FormTambahPegawai />
+      <Heading title={'Ubah Pegawai'} />
+      <FormUbahPegawai />
     </div>
   );
 };
 
-export default TambahPegawai;
+export default UbahPegawai;

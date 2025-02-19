@@ -2,6 +2,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
 import { useLocation } from 'react-router-dom';
 import Button from '../../../components/button/Button';
+import AddButton from '../../../components/button/AddButton';
+// import StockForm from '../../../components/StockForm';
 
 const DataMakanan = ({ title }) => {
   const location = useLocation();
@@ -36,9 +38,9 @@ const DataMakanan = ({ title }) => {
           <td>1</td>
           <td>
             <span className='flex gap-2 '>
-              <Button className={'bg-blue-500 text-light'}>
-                <FontAwesomeIcon icon={'fas fa-plus'} />
-              </Button>
+              <AddButton />
+
+              {/* <StockForm /> */}
 
               <Button className={'bg-blue-500 text-light'}>
                 <FontAwesomeIcon icon={'fas fa-pencil'} />

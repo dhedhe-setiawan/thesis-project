@@ -1,7 +1,17 @@
 import PropTypes from 'prop-types';
 import { useId } from 'react';
 
-const Input = ({ inline, label, type = 'text', placeholder, name, register, rules, error }) => {
+const Input = ({
+  inline,
+  label,
+  type = 'text',
+  placeholder,
+  name,
+  className,
+  register,
+  rules,
+  error,
+}) => {
   const id = useId();
 
   return (
@@ -9,7 +19,7 @@ const Input = ({ inline, label, type = 'text', placeholder, name, register, rule
       {label && <label htmlFor={id}>{label}</label>}
       <input
         id={id}
-        className='px-3 py-2 rounded'
+        className={`px-3 py-2 rounded ${className}`}
         type={type}
         placeholder={placeholder}
         {...(register ? register(name, rules) : {})} // Cegah error jika register undefined
@@ -21,12 +31,15 @@ const Input = ({ inline, label, type = 'text', placeholder, name, register, rule
 };
 
 Input.propTypes = {
-  error: PropTypes.any,
+  className: PropTypes.any,
+  error: PropTypes.shape({
+    message: PropTypes.any,
+  }),
   inline: PropTypes.any,
   label: PropTypes.any,
   name: PropTypes.any,
   placeholder: PropTypes.any,
-  register: PropTypes.any,
+  register: PropTypes.func,
   rules: PropTypes.any,
   type: PropTypes.string,
 };

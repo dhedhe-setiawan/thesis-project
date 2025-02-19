@@ -26,7 +26,7 @@ const Frame = ({ children, access }) => {
         <Navbar />
 
         {path.includes(location.pathname) ? (
-          <div className='flex flex-col items-center gap-10 py-10'>
+          <div className='flex flex-col items-center gap-10 p-10'>
             <Heading title={`Data ${toSentenceCase(getPathname())}`}>
               <Button
                 className={'bg-brand text-light'}

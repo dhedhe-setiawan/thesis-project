@@ -16,7 +16,7 @@
 
   th,
   td {
-    @apply px-3 py-2 border border-dark;
+    @apply px-3 py-2 border border-dark text-nowrap;
   }
 
   tr {
