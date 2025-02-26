@@ -5,12 +5,13 @@ import { useState } from 'react';
 const fetcher = (url) => api.get(url).then((res) => res.data.result);
 
 export const useGetData = (link) => {
-  const { data, error, isLoading } = useSWR(link, fetcher);
+  const { data, error, isLoading, mutate } = useSWR(link, fetcher);
 
   return {
     data,
     isLoading,
     error: error?.response?.data ?? error,
+    reload: () => mutate(), // Function untuk re-fetch data
   };
 };
 

@@ -13,3 +13,19 @@ export const setJabatan = (jabatan) => {
       break;
   }
 };
+
+export const setKategori = (kategori) => {
+  switch (kategori) {
+    case 'F':
+      return 'Makanan';
+
+    case 'D':
+      return 'Minuman';
+
+    case 'S':
+      return 'Sembako';
+
+    default:
+      break;
+  }
+};

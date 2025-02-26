@@ -16,7 +16,7 @@ const AddButton = () => {
 
   // Gunakan useEffect untuk melihat perubahan nilai input (opsional)
   useEffect(() => {
-    console.log(inputValue);
+    // console.log(inputValue);
   }, [inputValue]);
 
   return (

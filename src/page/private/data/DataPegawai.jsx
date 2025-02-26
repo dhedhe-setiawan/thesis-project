@@ -4,7 +4,7 @@ import useAxios, { useGetData } from '../../../utils/axios';
 import { setJabatan } from '../../../utils/helper';
 
 const DataPegawai = () => {
-  const { data, isLoading, error } = useGetData('/pegawai');
+  const { data, isLoading, error, reload } = useGetData('/pegawai?sortBy=nama');
   const { deleteData } = useAxios();
 
   if (isLoading) return <p>Loading...</p>;
@@ -15,9 +15,10 @@ const DataPegawai = () => {
     if (!isConfirm) return;
 
     const { response, error } = await deleteData(`/pegawai/${id}`);
-
     if (error) return alert(error.message);
     alert(response.message);
+
+    reload();
   };
 
   return (

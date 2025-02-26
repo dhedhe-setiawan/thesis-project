@@ -20,6 +20,7 @@ const FormUbahPegawai = () => {
 
   const { data, isLoading, error } = useGetData(`/pegawai/${id_pegawai}`);
   const { patchData } = useAxios();
+
   const navigate = useNavigate();
 
   if (error) return <p className='text-brand'>Terjadi kesalahan: {error.message}</p>;
