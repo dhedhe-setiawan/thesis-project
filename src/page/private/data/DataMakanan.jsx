@@ -8,7 +8,7 @@ import useAxios, { useGetData } from '../../../utils/axios';
 const DataMakanan = ({ title }) => {
   const location = useLocation();
 
-  const { data, isLoading, error, reload } = useGetData('/barang?kategori=F');
+  const { data, isLoading, error, reload } = useGetData('/barang?kategori=F&sortBy=nama');
   const { deleteData } = useAxios();
 
   if (isLoading) return <p>Loading...</p>;
@@ -47,9 +47,10 @@ const DataMakanan = ({ title }) => {
         {data.map((d, i) => (
           <tr key={i}>
             <td>{i + 1}</td>
+
             <td>
-              <span className='flex gap-2 '>
-                {location.pathname === '/dashboard' && <AddButton />}
+              <div className='flex gap-2 '>
+                {location.pathname === '/dashboard' && <AddButton id_barang={d.id_barang} />}
 
                 {location.pathname !== '/dashboard' && (
                   <>
@@ -69,7 +70,7 @@ const DataMakanan = ({ title }) => {
                     </Button>
                   </>
                 )}
-              </span>
+              </div>
             </td>
 
             <td>

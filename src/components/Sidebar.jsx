@@ -19,7 +19,10 @@ const Sidebar = ({ access }) => {
             <NavButton link={'/data/minuman'}>Data Minuman</NavButton>
             <NavButton link={'/data/sembako'}>Data Sembako</NavButton>
           </Dropdwon>
-          <NavButton link={'/laporan'}>Laporan</NavButton>
+          <Dropdwon text={'Laporan'}>
+            <NavButton link={'/laporan/masuk'}>Laporan Masuk</NavButton>
+            <NavButton link={'/laporan/keluar'}>Laporan Keluar</NavButton>
+          </Dropdwon>
         </>
       )}
 
@@ -34,7 +37,10 @@ const Sidebar = ({ access }) => {
       {access === 'A' && (
         <>
           <NavButton link={'/dashboard'}>Dashboard</NavButton>
-          <NavButton link={'/laporan'}>Laporan</NavButton>
+          <Dropdwon text={'Laporan'}>
+            <NavButton link={'/laporan/masuk'}>Laporan Masuk</NavButton>
+            <NavButton link={'/laporan/keluar'}>Laporan Keluar</NavButton>
+          </Dropdwon>
         </>
       )}
     </aside>

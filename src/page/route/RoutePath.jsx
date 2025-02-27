@@ -20,10 +20,12 @@ import DataPegawai from '../private/data/DataPegawai';
 import TambahPegawai from '../private/tambah/TambahPegawai';
 
 import TambahBarang from '../private/tambah/TambahBarang';
-import Laporan from '../private/Laporan';
+import LaporanKeluar from '../private/LaporanKeluar';
 import UbahPegawai from '../private/ubah/UbahPegawai';
 import UbahBarang from '../private/ubah/UbahBarang';
 import TambahStock from '../private/tambah/TambahStock';
+import LaporanMasuk from '../private/LaporanMasuk';
+import { CartProvider } from '../../contexts/CartContext';
 
 const isLogin = true;
 const access = 'M';
@@ -45,8 +47,17 @@ const RoutePath = () => {
       </Route>
 
       <Route element={<PrivateRoute isLogin={isLogin} access={access} allowed={['M', 'A']} />}>
-        <Route path='/dashboard' element={<Dashboard />} />
-        <Route path='/laporan' element={<Laporan />} />
+        <Route
+          path='/dashboard'
+          element={
+            <CartProvider>
+              <Dashboard />
+            </CartProvider>
+          }
+        />
+
+        <Route path='/laporan/masuk' element={<LaporanMasuk />} />
+        <Route path='/laporan/keluar' element={<LaporanKeluar />} />
       </Route>
 
       <Route element={<PrivateRoute isLogin={isLogin} access={access} allowed={['M']} />}>

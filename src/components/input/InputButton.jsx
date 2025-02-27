@@ -3,7 +3,7 @@ const InputButton = ({ value, disabled = false }) => {
   return (
     <input
       className={`px-3 py-2 rounded cursor-pointer bg-brand hover:brightness-95 text-light ${
-        disabled && 'cursor-wait saturate-0  '
+        disabled && 'cursor-wait saturate-0'
       }`}
       value={value}
       type='submit'
