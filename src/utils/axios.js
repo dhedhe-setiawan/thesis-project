@@ -2,7 +2,15 @@ import useSWR from 'swr';
 import api from './api';
 import { useState } from 'react';
 
-const fetcher = (url) => api.get(url).then((res) => res.data.result);
+const fetcher = (url) => {
+  const token = localStorage.getItem('token');
+
+  return api
+    .get(url, {
+      headers: { Authorization: `Bearer ${token}` }, // ✅ Tambahkan Authorization Header
+    })
+    .then((res) => res.data.result);
+};
 
 export const useGetData = (link) => {
   const { data, error, isLoading, mutate } = useSWR(link, fetcher);
@@ -18,12 +26,18 @@ export const useGetData = (link) => {
 const useAxios = () => {
   const [isLoading, setIsLoading] = useState(false);
 
+  // Fungsi untuk mendapatkan token dari localStorage
+  const getAuthHeader = () => {
+    const token = localStorage.getItem('token');
+    return token ? { Authorization: `Bearer ${token}` } : {};
+  };
+
   // **POST Data**
   const postData = async (link, payload) => {
     setIsLoading(true);
 
     try {
-      const response = await api.post(link, payload);
+      const response = await api.post(link, payload, { headers: getAuthHeader() });
       return { response: response?.data ?? response };
     } catch (error) {
       return { error: error?.response?.data ?? error };
@@ -42,7 +56,7 @@ const useAxios = () => {
     );
 
     try {
-      const response = await api.patch(link, filteredPayload);
+      const response = await api.patch(link, filteredPayload, { headers: getAuthHeader() });
       return { response: response?.data ?? response };
     } catch (error) {
       return { error: error?.response?.data ?? error };
@@ -56,7 +70,7 @@ const useAxios = () => {
     setIsLoading(true);
 
     try {
-      const response = await api.delete(link);
+      const response = await api.delete(link, { headers: getAuthHeader() });
       return { response: response?.data ?? response };
     } catch (error) {
       return { error: error?.response?.data ?? error };

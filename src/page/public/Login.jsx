@@ -2,6 +2,7 @@ import { useForm } from 'react-hook-form';
 import Heading from '../../components/Heading';
 import Input from '../../components/input/Input';
 import InputButton from '../../components/input/InputButton';
+import useAxios from '../../utils/axios';
 
 const LoginForm = () => {
   const {
@@ -11,9 +12,18 @@ const LoginForm = () => {
     reset,
   } = useForm();
 
-  const login = (data) => {
-    console.log('Login Data:', data);
+  const { postData, isLoading } = useAxios();
+
+  const login = async (data) => {
+    const { response, error } = await postData('/login', data);
+    if (error) return alert(error.message);
+
+    localStorage.setItem('token', response.result);
+    alert(response.message);
+
     reset();
+
+    window.location.href = '/dashboard';
   };
 
   return (
@@ -39,7 +49,7 @@ const LoginForm = () => {
         error={errors.password}
       />
       <br />
-      <InputButton />
+      <InputButton value={isLoading ? 'Loading...' : 'Login'} disabled={isLoading} />
     </form>
   );
 };

@@ -7,34 +7,39 @@ import DataMakanan from './data/DataMakanan';
 import DataMinuman from './data/DataMinuman';
 import DataSembako from './data/DataSembako';
 import { CartContext } from '../../contexts/CartContext';
-import { useContext, useRef } from 'react';
+import { useContext, useRef, useState } from 'react';
 import useAxios, { useGetData } from '../../utils/axios';
 import { print } from '../../utils/print';
+import Barang from './data/Barang';
 
 const SearchForm = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-    reset,
   } = useForm();
 
+  const [nama, setNama] = useState();
+
   const search = (data) => {
-    console.log('Search', data);
-    reset();
+    setNama(data.nama);
   };
 
   return (
-    <form className='flex gap-3' onSubmit={handleSubmit(search)}>
-      <Input
-        type={'search'}
-        placeholder={'Contoh: Telur'}
-        name={'search'}
-        register={register}
-        error={errors.search}
-      />
-      <InputButton value={'Cari'} />
-    </form>
+    <>
+      <form className='flex gap-3' onSubmit={handleSubmit(search)}>
+        <Input
+          type={'search'}
+          placeholder={'Contoh: Telur'}
+          name={'nama'}
+          register={register}
+          error={errors.search}
+        />
+        <InputButton value={'Cari'} />
+      </form>
+
+      {nama && <Barang nama={nama} />}
+    </>
   );
 };
 

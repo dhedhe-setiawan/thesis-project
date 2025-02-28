@@ -9,6 +9,7 @@ Dibuat menggunakan `Vite + Javascript`
 ## Daftar Isi
 
 - [About Us](#about-us)
+- [Persyaratan](#persyaratan)
 - [Persiapan](#persiapan)
 - [More](#more)
 
@@ -21,29 +22,44 @@ Dibuat menggunakan `Vite + Javascript`
 | Hacker/Programmer | `Dede Setiawaan`                                           |
 | Hacker/Programmer | [`Kukuh Imanura`](https://www.instagram.com/kukuh-imanura) |
 
+## Persyaratan
+
+| List                                                  |
+| ----------------------------------------------------- |
+| [Node.js](https://nodejs.org)                         |
+| [Backend](https://github.com/dhedhe-setiawan/API.git) |
+
 ## Persiapan
 
 1. Clone/Pull Repository
 
-```bash
-   git clone https://github.com/dhedhe-setiawan/thesis-project.git
-```
+   ```bash
+      git clone https://github.com/dhedhe-setiawan/thesis-project.git
+   ```
 
 2. Instalasi Package
 
-```bash
-   npm install
-```
+   ```bash
+      npm install
+   ```
 
 3. Menjalankan Server Development
 
-```bash
-   npm run dev
-```
+   ```bash
+      npm run dev
+   ```
+
+4. Login dengan akun default
+
+| Username         | Password         |
+| ---------------- | ---------------- |
+| manajer1234      | manajer1234      |
+| admin1234        | admin1234        |
+| kepalagudang1234 | kepalagudang1234 |
 
 ## More
 
-# React + Vite
+### React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 

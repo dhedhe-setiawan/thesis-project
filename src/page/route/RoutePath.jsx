@@ -26,9 +26,12 @@ import UbahBarang from '../private/ubah/UbahBarang';
 import TambahStock from '../private/tambah/TambahStock';
 import LaporanMasuk from '../private/LaporanMasuk';
 import { CartProvider } from '../../contexts/CartContext';
+import { getUserRole, isAuthenticated } from '../../utils/auth';
 
-const isLogin = true;
-const access = 'M';
+const isLogin = isAuthenticated();
+const access = getUserRole();
+
+// localStorage.removeItem('token');
 
 const RoutePath = () => {
   return (
