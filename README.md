@@ -51,11 +51,11 @@ Dibuat menggunakan `Vite + Javascript`
 
 4. Login dengan akun default
 
-| Username         | Password         |
-| ---------------- | ---------------- |
-| manajer1234      | manajer1234      |
-| admin1234        | admin1234        |
-| kepalagudang1234 | kepalagudang1234 |
+   | Username         | Password         |
+   | ---------------- | ---------------- |
+   | manajer1234      | manajer1234      |
+   | admin1234        | admin1234        |
+   | kepalagudang1234 | kepalagudang1234 |
 
 ## More
 
