@@ -12,7 +12,7 @@ export const print = (ref) => {
           th { background-color: #f2f2f2; }
         </style>
       </head>
-      <body>
+      <body style="text-align: center;">
         <h2 style="text-align: center;">Struk Pembelian</h2>
         ${content}
         <script>

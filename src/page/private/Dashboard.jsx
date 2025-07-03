@@ -9,8 +9,8 @@ import DataSembako from './data/DataSembako';
 import { CartContext } from '../../contexts/CartContext';
 import { useContext, useRef, useState } from 'react';
 import useAxios, { useGetData } from '../../utils/axios';
-import { print } from '../../utils/print';
 import Barang from './data/Barang';
+import { useNavigate } from 'react-router-dom';
 
 const SearchForm = () => {
   const {
@@ -21,13 +21,16 @@ const SearchForm = () => {
 
   const [nama, setNama] = useState();
 
-  const search = (data) => {
+  const search = data => {
     setNama(data.nama);
   };
 
   return (
     <>
-      <form className='flex gap-3' onSubmit={handleSubmit(search)}>
+      <form
+        className='flex gap-3'
+        onSubmit={handleSubmit(search)}
+      >
         <Input
           type={'search'}
           placeholder={'Contoh: Telur'}
@@ -45,6 +48,7 @@ const SearchForm = () => {
 
 const Dashboard = () => {
   const { postData, isLoading: postLoading } = useAxios();
+  const navigate = useNavigate();
 
   // Ref untuk menangkap elemen tabel
   const tableRef = useRef(null);
@@ -57,8 +61,8 @@ const Dashboard = () => {
   if (error) return <p>Error: {error.message}</p>;
 
   // Gabungkan data cart dengan barangData
-  const mergedCart = cart.map((item) => {
-    const barang = barangData.find((b) => b.id_barang === item.id_barang);
+  const mergedCart = cart.map(item => {
+    const barang = barangData.find(b => b.id_barang === item.id_barang);
     return {
       ...item,
       nama: barang ? barang.nama : 'Tidak ditemukan',
@@ -67,12 +71,16 @@ const Dashboard = () => {
     };
   });
 
-  const cetak = async () => {
-    const promises = cart.map((item) => {
+  const checkout = async () => {
+    if (cart.length < 1) return;
+
+    const promises = cart.map(item => {
       const data = {
         id_barang: item.id_barang,
         jumlah: item.jumlah,
-        tanggal: new Date().toLocaleString('sv-SE', { timeZone: 'Asia/Makassar' }),
+        tanggal: new Date().toLocaleString('sv-SE', {
+          timeZone: 'Asia/Makassar',
+        }),
       };
 
       return postData('/barangKeluar', data).then(({ response, error }) => {
@@ -83,11 +91,17 @@ const Dashboard = () => {
 
     await Promise.all(promises);
 
-    alert('Data berhasil ditambah');
+    const data = {
+      barang: cart,
+    };
 
-    print(tableRef);
+    const { response, error } = await postData('/pesanan', data);
+
+    if (error) return alert(error.message);
+    alert(response.message);
+
     clearCart();
-    window.location.reload();
+    navigate(`/detail/pesanan/${response.result.insertId}`);
   };
 
   return (
@@ -105,7 +119,11 @@ const Dashboard = () => {
       <div className='flex flex-col self-start gap-3'>
         <h2>Chekout</h2>
 
-        <table className='w-fit' border={1} ref={tableRef}>
+        <table
+          className='w-fit'
+          border={1}
+          ref={tableRef}
+        >
           <thead>
             <tr>
               <th>No</th>
@@ -140,8 +158,8 @@ const Dashboard = () => {
 
         <Button
           className={'bg-brand text-light'}
-          text={postLoading ? 'Loading...' : 'Kirim'}
-          onClick={cetak}
+          text={postLoading ? 'Loading...' : 'Checkout'}
+          onClick={checkout}
           disabled={postLoading}
         />
       </div>

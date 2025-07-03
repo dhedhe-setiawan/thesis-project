@@ -6,7 +6,9 @@ const Sidebar = ({ access }) => {
   return (
     <aside className='h-full bg-dark'>
       <hgroup>
-        <h2 className='px-5 py-5 mx-auto text-light w-fit text-nowrap'>Karya Bersama</h2>
+        <h2 className='px-5 py-5 mx-auto text-light w-fit text-nowrap'>
+          Karya Bersama
+        </h2>
         <hr />
       </hgroup>
 
@@ -14,6 +16,7 @@ const Sidebar = ({ access }) => {
         <>
           <NavButton link={'/dashboard'}>Dashboard</NavButton>
           <NavButton link={'/data/pegawai'}>Data Pegawai</NavButton>
+          <NavButton link={'/data/pesanan'}>Data Pesanan</NavButton>
           <Dropdwon text={'Data Barang'}>
             <NavButton link={'/data/makanan'}>Data Makanan</NavButton>
             <NavButton link={'/data/minuman'}>Data Minuman</NavButton>
@@ -37,6 +40,7 @@ const Sidebar = ({ access }) => {
       {access === 'A' && (
         <>
           <NavButton link={'/dashboard'}>Dashboard</NavButton>
+          <NavButton link={'/data/pesanan'}>Data Pesanan</NavButton>
           <Dropdwon text={'Laporan'}>
             <NavButton link={'/laporan/masuk'}>Laporan Masuk</NavButton>
             <NavButton link={'/laporan/keluar'}>Laporan Keluar</NavButton>

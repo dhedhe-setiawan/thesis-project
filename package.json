@@ -1,5 +1,5 @@
 {
-  "name": "sidede",
+  "name": "frontend",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -16,12 +16,14 @@
     "@fortawesome/react-fontawesome": "^0.2.2",
     "axios": "^1.7.9",
     "dayjs": "^1.11.13",
+    "qrcode": "^1.5.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-hook-form": "^7.54.0",
     "react-router-dom": "^7.0.2",
     "react-to-print": "^3.0.5",
-    "swr": "^2.3.2"
+    "swr": "^2.3.2",
+    "zustand": "^5.0.6"
   },
   "devDependencies": {
     "@eslint/js": "^9.15.0",
@@ -42,5 +44,19 @@
   "description": "Sistem Informasi Pendaftaran Donor Darah UTD-PMI Kabupaten Sumbawa",
   "main": "eslint.config.js",
   "author": "imraakun dev",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dhedhe-setiawan/thesis-project.git"
+  },
+  "keywords": [
+    "frontend",
+    "react",
+    "sistem",
+    "inventory"
+  ],
+  "bugs": {
+    "url": "https://github.com/dhedhe-setiawan/thesis-project/issues"
+  },
+  "homepage": "https://github.com/dhedhe-setiawan/thesis-project#readme"
 }

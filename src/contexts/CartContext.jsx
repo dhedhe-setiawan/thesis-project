@@ -5,21 +5,22 @@ export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
-
-  const addToCart = (item) => {
-    setCart((prevCart) => [...prevCart, item]);
+  const addToCart = item => {
+    setCart(prevCart => [...prevCart, item]);
   };
 
   const updateCart = useCallback((id, jumlah) => {
-    setCart((prevCart) => {
-      const existingItem = prevCart.find((item) => item.id_barang === id);
+    setCart(prevCart => {
+      const existingItem = prevCart.find(item => item.id_barang === id);
 
       if (jumlah > 0) {
         return existingItem
-          ? prevCart.map((item) => (item.id_barang === id ? { ...item, jumlah } : item))
+          ? prevCart.map(item =>
+              item.id_barang === id ? { ...item, jumlah } : item
+            )
           : [...prevCart, { id_barang: id, jumlah }];
       } else {
-        return prevCart.filter((item) => item.id_barang !== id);
+        return prevCart.filter(item => item.id_barang !== id);
       }
     });
   }, []);

@@ -12,9 +12,10 @@ const DataMakanan = ({ title }) => {
   const { deleteData } = useAxios();
 
   if (isLoading) return <p>Loading...</p>;
-  if (error) return <p className='text-brand'>Terjadi kesalahan: {error.message}</p>;
+  if (error)
+    return <p className='text-brand'>Terjadi kesalahan: {error.message}</p>;
 
-  const deleteBarang = async (id) => {
+  const deleteBarang = async id => {
     const isConfirm = confirm('Hapus?');
     if (!isConfirm) return;
 
@@ -50,7 +51,13 @@ const DataMakanan = ({ title }) => {
 
             <td>
               <div className='flex gap-2 '>
-                {location.pathname === '/dashboard' && <AddButton id_barang={d.id_barang} />}
+                {location.pathname === '/dashboard' && (
+                  <AddButton
+                    id_barang={d.id_barang}
+                    nama={d.nama}
+                    harga={d.harga}
+                  />
+                )}
 
                 {location.pathname !== '/dashboard' && (
                   <>
@@ -79,7 +86,9 @@ const DataMakanan = ({ title }) => {
                   <Button
                     link={'/tambah/stock'}
                     className={'bg-blue-500 text-light'}
-                    state={{ id_barang: d.id_barang }}
+                    state={{
+                      id_barang: d.id_barang,
+                    }}
                   >
                     <FontAwesomeIcon icon={'fas fa-plus'} />
                   </Button>

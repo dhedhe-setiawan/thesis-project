@@ -50,7 +50,13 @@ const DataMinuman = ({ title }) => {
 
             <td>
               <div className='flex gap-2 '>
-                {location.pathname === '/dashboard' && <AddButton id_barang={d.id_barang} />}
+                {location.pathname === '/dashboard' && (
+                  <AddButton
+                    id_barang={d.id_barang}
+                    nama={d.nama}
+                    harga={d.harga}
+                  />
+                )}
 
                 {location.pathname !== '/dashboard' && (
                   <>
