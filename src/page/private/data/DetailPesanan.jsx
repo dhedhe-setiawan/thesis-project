@@ -55,7 +55,7 @@ const DetailPesanan = () => {
   };
 
   return (
-    <div className='w-full overflow-x-auto flex flex-col items-center py-8 gap-8'>
+    <div className='w-full overflow-x-auto flex flex-col items-center py-10 gap-10'>
       <Heading
         title={'Detail Pesanan'}
         subtitle={data[0].status}

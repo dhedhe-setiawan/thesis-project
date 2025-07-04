@@ -3,7 +3,9 @@ import Button from '../../../components/button/Button';
 import useAxios, { useGetData } from '../../../utils/axios';
 
 const Pesanan = () => {
-  const { data, isLoading, error, reload } = useGetData('/pesanan');
+  const { data, isLoading, error, reload } = useGetData(
+    '/pesanan?sortBy=tanggal&sortOrder=desc'
+  );
   const { deleteData } = useAxios();
 
   if (isLoading) return <p>Loading...</p>;
