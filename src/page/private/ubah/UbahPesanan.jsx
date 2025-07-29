@@ -62,7 +62,7 @@ const FormUbahPesanan = () => {
         <option value='Gagal'>Gagal</option>
       </Select>
 
-      <table
+      {/* <table
         className='w-fit mt-4 opacity-50 pointer-events-none'
         border={1}
       >
@@ -99,7 +99,7 @@ const FormUbahPesanan = () => {
             </td>
           </tr>
         </tbody>
-      </table>
+      </table> */}
 
       <br />
       <InputButton
@@ -113,7 +113,7 @@ const FormUbahPesanan = () => {
 const UbahPesanan = () => {
   return (
     <div className='flex flex-col items-center gap-10 p-10'>
-      <Heading title={'Ubah Pegawai'} />
+      <Heading title={'Ubah Pesanan'} />
       <FormUbahPesanan />
     </div>
   );

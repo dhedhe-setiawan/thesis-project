@@ -34,9 +34,7 @@ const Frame = ({ children, access }) => {
         {path.includes(location.pathname) ? (
           <div className='flex flex-col items-center gap-10 p-10'>
             <Heading title={`Data ${toSentenceCase(getPathname())}`}>
-              {path.includes('/data/pesanan') ? (
-                ''
-              ) : (
+              {location.pathname !== '/data/pesanan' && (
                 <Button
                   className={'bg-brand text-light'}
                   link={

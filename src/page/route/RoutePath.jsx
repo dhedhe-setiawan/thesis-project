@@ -7,6 +7,7 @@ import PrivateRoute from './PrivateRoute';
 import NotFound from '../public/NotFound';
 // Public
 import Login from '../public/Login';
+import ForgotPassword from '../public/ForgotPassword';
 import UbahPesanan from '../private/ubah/UbahPesanan';
 import UbahPegawai from '../private/ubah/UbahPegawai';
 import UbahBarang from '../private/ubah/UbahBarang';
@@ -45,6 +46,10 @@ const RoutePath = () => {
         <Route
           path='/'
           element={<Login />}
+        />
+        <Route
+          path='/forgotpass'
+          element={<ForgotPassword />}
         />
       </Route>
 
