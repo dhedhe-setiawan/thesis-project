@@ -71,7 +71,7 @@ const Pesanan = () => {
               <td>
                 <p>
                   Rp.
-                  {d.barang.reduce((acc, b) => acc + b.jumlah * b.harga, 0)}
+                  {JSON.parse(d.barang).reduce((acc, b) => acc + b.jumlah * b.harga, 0)}
                 </p>
               </td>
             </tr>

@@ -91,7 +91,7 @@ const DetailPesanan = () => {
           </thead>
 
           <tbody>
-            {data[0].barang.map((b, i) => {
+            {JSON.parse(data[0].barang).map((b, i) => {
               return (
                 <tr key={i}>
                   <td>{i + 1}</td>
@@ -106,7 +106,7 @@ const DetailPesanan = () => {
             <tr className='font-bold'>
               <td colSpan={4}>Total Pembayaran</td>
               <td>
-                {data[0].barang.reduce(
+                {JSON.parse(data[0].barang).reduce(
                   (total, b) => total + b.jumlah * b.harga,
                   0
                 )}
